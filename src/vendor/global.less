@@ -1,0 +1,173 @@
+.layout-dark-color-1 {
+  background-color: #000 !important;
+}
+
+.layout-dark-color-2 {
+  background-color: #212121 !important;
+}
+
+.layout-dark-color-3 {
+  background-color: #303030 !important;
+}
+
+.layout-dark-color-4 {
+  background-color: #424242 !important;
+}
+
+// @blur: 12px;
+// @light: rgba(255,255,255, 0.75);
+// @dark: rgba(48, 48, 48, 0.75);file_get_contents('php://input')
+
+:root {
+  --custom-blur: 16px;
+  --custom-light: rgba(255,255,255, 0.75);
+  --custom-dark: rgba(48, 48, 48, 0.75);
+  --custom-light-1: rgba(255,255,255, 1);
+  --custom-dark-1: rgba(48, 48, 48, 1);
+  --custom-font: "MaterialDesignForum";
+}
+
+// @font-face {
+//   font-family: "MaterialDesignForum";
+//   //src: url("~@/assets/fonts/方正像素12.TTF") format("truetype");
+
+//   src: url("~@/assets/fonts/浪漫雅圆.ttf") format("truetype");
+
+//   //src: url("~@/assets/fonts/Minecraft-ten.ttf") format("truetype");
+//   //src: url("~@/assets/fonts/经典综艺整合狂飙字体.ttf") format("truetype");
+// }
+
+.custom-font(){
+  font-family: var(--custom-font) !important;
+}
+
+*{
+  .custom-font();
+
+  .v-application{
+    .overline{
+      .custom-font();
+    }
+    .text-caption{
+      .custom-font();
+    }
+  }
+}
+
+.layout-colourless {
+  .layout-colourless();
+}
+
+.glass-container{
+  .glass-container();
+}
+
+.layout-colourless(){
+  background-color:rgba(255, 255, 255, 0) !important;
+}
+
+.glass-container(){
+  //transform: opacity(1) easy !important;
+  
+  .theme--light & {
+    backdrop-filter: blur(var(--custom-blur)) brightness(120%) saturate(120%) !important;
+    background-color: var(--custom-light) !important;
+  }
+  .theme--dark & {
+    backdrop-filter: blur(var(--custom-blur)) brightness(80%) saturate(100%) !important;
+    background-color: var(--custom-dark) !important;
+  }
+
+}
+
+.v-dialog{
+  //box-shadow: none !important;
+  .layout-colourless();
+}
+
+// .v-select-list{
+//   .glass-container();
+// }
+
+.v-menu__content{
+  .glass-container();
+  .v-card{
+    .layout-colourless();
+    .v-list{
+      padding: 0 !important;
+      .layout-colourless();
+    }
+  }
+  .v-list{
+    padding: 0 !important;
+    .layout-colourless();
+  }
+  .v-tabs-bar{
+    .layout-colourless();
+  }
+  .v-tabs-items{
+    .layout-colourless();
+  }
+}
+
+.v-btn-toggle:not(.v-btn-toggle--group) {
+  .layout-colourless();
+}
+
+.v-color-picker{
+  .layout-colourless();
+}
+
+.v-snack__wrapper{
+  border-radius: 8px !important;
+  .glass-container();
+  .theme--light & {
+    color: #000 !important;
+  }
+}
+
+//#app{
+  /* 定义滚动条的宽度和圆角 */
+  ::-webkit-scrollbar {
+    width: 6px !important;
+    border-radius: 100px !important;
+  }
+
+  /* 定义滚动条轨道的背景色 */
+  ::-webkit-scrollbar-track {
+    background-color: #00000000 !important;
+  }
+
+  /* 定义滚动条滑块的样式 */
+  ::-webkit-scrollbar-thumb {
+    background-color: #c1c1c1 !important;
+    border-radius: 3px !important;
+    transition: width 0.2s !important; /* 添加过渡效果 */
+
+    .theme--dark & {
+      background-color: #707070 !important;
+    }
+  }
+
+  // /* 如果::-webkit-scrollbar-thumb且有theme--dark类，则滚动条滑块的背景色为黑色 */
+  // .theme--dark ::-webkit-scrollbar-thumb {
+  //   background-color: #7a7a7a !important;
+  // }
+
+
+  // /* 当滚动条处于不滚动状态时隐藏滚动条 */
+  // ::-webkit-scrollbar-thumb:vertical:active {
+  //   background-color: #888;
+  // }
+
+  // /* 当滚动条处于滚动状态时显示滚动条 */
+  // ::-webkit-scrollbar-thumb:vertical {
+  //   background-color: #888;
+  // }
+//}
+
+
+
+
+
+

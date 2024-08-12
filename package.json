@@ -1,0 +1,81 @@
+{
+  "name": "MaterialDesignForum",
+  "version": "2023.10.22.161405",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build --clientManifest",
+    "lint": "vue-cli-service lint",
+    "i18n:report": "vue-cli-service i18n:report --src \"./src/**/*.?(js|vue)\" --locales \"./src/undefined/**/*.json\""
+  },
+  "dependencies": {
+    "@tiptap/extension-code-block-lowlight": "^2.0.4",
+    "@tiptap/pm": "^2.0.4",
+    "@tiptap/starter-kit": "^2.0.4",
+    "@tiptap/vue-2": "^2.0.4",
+    "axios": "^1.4.0",
+    "core-js": "^3.31.1",
+    "express": "^4.18.2",
+    "fs": "^0.0.1-security",
+    "granim": "^2.0.0",
+    "highlight.js": "^11.8.0",
+    "lowlight": "^2.9.0",
+    "md5": "^2.3.0",
+    "mdui": "^1.0.2",
+    "mdui.editor": "^1.0.2",
+    "mdui.jq": "^2.0.1",
+    "qs": "^6.11.2",
+    "vconsole": "^3.15.1",
+    "vue": "^2.7.14",
+    "vue-cookies": "^1.8.3",
+    "vue-cropper": "^0.6.4",
+    "vue-i18n": "^8.26.3",
+    "vue-router": "^3.5.1",
+    "vue-server-renderer": "^2.7.14",
+    "vuetify": "^2.7.0",
+    "vuex": "^3.6.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.22.9",
+    "@babel/eslint-parser": "^7.22.9",
+    "@mdi/font": "^7.2.96",
+    "@vue/cli-plugin-babel": "~5.0.0",
+    "@vue/cli-plugin-eslint": "~5.0.0",
+    "@vue/cli-plugin-router": "~5.0.0",
+    "@vue/cli-plugin-vuex": "~5.0.0",
+    "@vue/cli-service": "~5.0.8",
+    "babel-loader": "^9.1.3",
+    "css-loader": "^6.8.1",
+    "eslint": "^7.32.0",
+    "eslint-plugin-vue": "^8.0.3",
+    "less": "^4.1.3",
+    "less-loader": "^11.1.3",
+    "postcss-loader": "^7.3.3",
+    "sass": "~1.32.0",
+    "sass-loader": "^10.0.0",
+    "terser-webpack-plugin": "^5.3.10",
+    "vue-cli-plugin-i18n": "^2.3.2",
+    "vue-cli-plugin-vuetify": "^2.5.8",
+    "vue-style-loader": "^4.1.3",
+    "vue-template-compiler": "^2.6.14",
+    "vuetify-loader": "^1.7.0"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "@babel/eslint-parser"
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}

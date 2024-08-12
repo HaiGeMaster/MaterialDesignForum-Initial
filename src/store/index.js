@@ -1,0 +1,631 @@
+import Vue from 'vue'
+import Vuex from 'vuex'
+Vue.use(Vuex)
+// import AppState from '@/state'
+// import AppbarState from '@/components/common/appbar/state'
+// import DrawerState from '@/components/common/drawer/state'
+// import EditorState from '@/components/editor/state'
+//import { mapState, mapGetters, mapMutations, mapActions } from 'vuex'
+export default new Vuex.Store({
+  state: {
+    App: {
+      Style:{
+        rounded:'xl',//xs,sm,md,lg,xl,xxl,pill,circle
+        default_rounded:'md',
+      },
+      OnScrollBottomArrayObjectCallback: [],//滚动到底部时的回调函数数组[{path:'',hash:'',callback:function(){}}]
+      OnScrollBottomArrayObjectCallback_Cache: false,
+      OnRouteUpdateSetWebSubTitleCallback: [],//[{path,hash,subtitle},...]
+      ThemeIsSet: false,
+      IsLogin: false,//true,//
+      UserToken: '',
+      WebTitle: 'Material Design Forum',
+      WebSubTitle: '',
+      Interface: 'user',//user,admin
+      User: {
+        user_id: -1,
+        user_group_id: -1,
+        username: "",
+        email: "",
+        avatar: null,
+        cover: null,
+        password: "",
+        create_ip: "",
+        create_location: "",
+        last_login_time: 0,
+        last_login_ip: "",
+        last_login_location: "",
+        follower_count: 0,
+        followee_count: 0,
+        following_article_count: 0,
+        following_question_count: 0,
+        following_topic_count: 0,
+        article_count: 0,
+        question_count: 0,
+        answer_count: 0,
+        notification_unread: 0,
+        inbox_system: 0,
+        inbox_user_group: 0,
+        inbox_private_message: 0,
+        headline: null,
+        bio: null,
+        blog: null,
+        company: null,
+        location: null,
+        create_time: 0,
+        update_time: 0,
+        disable_time: 0,
+        UserGroup: {
+          user_group_id: 1,
+          user_group_name: "Admin",
+          user_group_description: "Admin",
+          user_group_icon: null,
+          user_group_color: null,
+          user_group_user_count: 0,
+          ability_admin_login: false,
+          ability_admin_manage_user_group: false,
+          ability_admin_manage_user: false,
+          ability_admin_manage_topic: false,
+          ability_admin_manage_question: false,
+          ability_admin_manage_article: false,
+          ability_admin_manage_comment: false,
+          ability_admin_manage_answer: false,
+          ability_admin_manage_reply: false,
+          ability_admin_manage_report: false,
+          ability_create_article: false,
+          ability_create_question: false,
+          ability_create_answer: false,
+          ability_create_comment: false,
+          ability_create_reply: false,
+          ability_create_topic: false,
+          ability_edit_own_article: false,
+          ability_edit_own_question: false,
+          ability_edit_own_answer: false,
+          ability_edit_own_comment: false,
+          ability_edit_own_reply: false,
+          ability_edit_own_topic: false,
+          ability_delete_own_article: false,
+          ability_delete_own_question: false,
+          ability_delete_own_answer: false,
+          ability_delete_own_comment: false,
+          ability_delete_own_reply: false,
+          ability_delete_own_topic: false,
+          time_before_edit_article: 0,
+          time_before_edit_question: 0,
+          time_before_edit_answer: 0,
+          time_before_edit_comment: 0,
+          time_before_edit_reply: 0,
+          time_before_edit_topic: 0,
+          time_before_delete_article: 0,
+          time_before_delete_question: 0,
+          time_before_delete_answer: 0,
+          time_before_delete_comment: 0,
+          time_before_delete_reply: 0,
+          time_before_delete_topic: 0,
+          ability_edit_article_only_no_comment: true,
+          ability_edit_question_only_no_answer: true,
+          ability_edit_answer_only_no_comment: true,
+          ability_edit_question_only_no_comment: true,
+          ability_edit_comment_only_no_reply: true,
+          ability_edit_topic_only_no_article_or_question: true,
+          ability_delete_article_only_no_comment: true,
+          ability_delete_question_only_no_answer: true,
+          ability_delete_answer_only_no_comment: true,
+          ability_delete_question_only_no_comment: true,
+          ability_delete_comment_only_no_reply: true,
+          ability_delete_topic_only_no_article_or_question: true,
+          ability_edit_own_info: true
+        }
+      },
+      DeviceType: '',
+      UserSelectDeviceType: '',
+      Dialog: {
+        Login: false,//true,//
+        Register: false,//true,//
+        Reset: false,
+        TopicSelector: false,
+        EditInfo: false,
+        NewTopic: false,
+        Users: false,
+      },
+      Width: '',
+      Height: '',
+      Snackbar: {
+        Show: false,
+        Text: '',
+      },
+      AddFab: {
+        ShowScrollTopBtn: false,
+        ScrollPercentage: 0,
+        ScrollMode: 'up',//up,down
+        NewComment_Select: false,
+      },
+      ThemeButton: {
+        ElevateOnScroll: true,
+      },
+      Appbar: {
+        Tabbar: null,
+        Tabbars: {
+          topics_items: [
+            {
+              name: 'Message.Components.Common.Appbar.Tabbars.Topics_Items.Following',
+              link: '/topics#following',
+              needLogin: true,
+            },
+            {
+              name: 'Message.Components.Common.Appbar.Tabbars.Topics_Items.Recommended',
+              link: '/topics#recommended',
+              needLogin: true,
+            },
+          ],
+          questions_items: [
+            {
+              name: 'Message.Components.Common.Appbar.Tabbars.Questions_Items.Recent',
+              link: '/questions#recent',
+              needLogin: false,
+            },
+            {
+              name: 'Message.Components.Common.Appbar.Tabbars.Questions_Items.Popular',
+              link: '/questions#popular',
+              needLogin: false,
+            },
+            {
+              name: 'Message.Components.Common.Appbar.Tabbars.Questions_Items.Following',
+              link: '/questions#following',
+              needLogin: true,
+            },
+          ],
+          articles_items: [
+            {
+              name: 'Message.Components.Common.Appbar.Tabbars.Articles_Items.Recent',
+              link: '/articles#recent',
+              needLogin: false,
+            },
+            {
+              name: 'Message.Components.Common.Appbar.Tabbars.Articles_Items.Popular',
+              link: '/articles#popular',
+              needLogin: false,
+            },
+            {
+              name: 'Message.Components.Common.Appbar.Tabbars.Articles_Items.Following',
+              link: '/articles#following',
+              needLogin: true,
+            },
+          ],
+          users_items: [
+            {
+              name: 'Message.Components.Common.Appbar.Tabbars.Users_Items.Followees',
+              link: '/users#followees',
+              needLogin: true,
+            },
+            {
+              name: 'Message.Components.Common.Appbar.Tabbars.Users_Items.Followers',
+              link: '/users#followers',
+              needLogin: true,
+            },
+            {
+              name: 'Message.Components.Common.Appbar.Tabbars.Users_Items.Recommended',
+              link: '/users#recommended',
+              needLogin: false,
+            },
+          ],
+          notifications_items: [
+            {
+              name: 'Message.Components.Common.Appbar.Tabbars.Notifications_Items.System',
+              link: '/notifications#system',
+              needLogin: true,
+            },
+            {
+              name: 'Message.Components.Common.Appbar.Tabbars.Notifications_Items.UserGroup',
+              link: '/notifications#user_group',
+              needLogin: true,
+            },
+            {
+              name: 'Message.Components.Common.Appbar.Tabbars.Notifications_Items.PrivateMessage',
+              link: '/notifications#private_message',
+              needLogin: true,
+            },
+          ],
+        },
+        TabbarsCurrentData: {},
+        Title: 'Material Design Forum',
+        Subheader: '',
+        UpdateDrawer: false,
+        TabbarsShow: false,
+      },
+      AppbarSearch: {
+        Show: false,
+      },
+      Drawer: {
+        Show: true,
+        Items: [],
+        user_items_1: [
+          { text: 'Message.Components.Common.Drawer.Home', icon: 'mdi-home', routers: '/', needLogin: false },
+          { text: 'Message.Components.Common.Drawer.Topics', icon: 'mdi-book-variant', routers: '/topics', needLogin: false },
+          { text: 'Message.Components.Common.Drawer.Questions', icon: 'mdi-forum', routers: '/questions', needLogin: false },
+          { text: 'Message.Components.Common.Drawer.Articles', icon: 'mdi-file-document', routers: '/articles', needLogin: false },
+        ],
+        user_items_2: [
+          { text: 'Message.Components.Common.Drawer.PersonalData', icon: 'mdi-account-circle', routers: '/users/local_user_id', needLogin: true },
+          { text: 'Message.Components.Common.Drawer.Users', icon: 'mdi-account-multiple', routers: '/users', needLogin: false },
+          { text: 'Message.Components.Common.Drawer.Notice', icon: 'mdi-bell', routers: '/notifications', needLogin: true },
+          // { text: '编辑器测试', icon: 'mdi-test-tube', routers: '/test', needLogin: false },
+        ],
+        admin_items_1: [
+          { text: 'Message.Components.Common.Drawer.DashBoard', icon: 'mdi-view-dashboard', routers: '/admin', needLogin: true },
+        ],
+        admin_items_2: [
+          { text: 'Message.Components.Common.Drawer.Topics', icon: 'mdi-book-variant', routers: '/admin/topics', needLogin: true },
+          { text: 'Message.Components.Common.Drawer.Questions', icon: 'mdi-forum', routers: '/admin/questions', needLogin: true },
+          { text: 'Message.Components.Common.Drawer.Answers', icon: 'mdi-message-reply', routers: '/admin/answers', needLogin: true },
+          { text: 'Message.Components.Common.Drawer.Articles', icon: 'mdi-file-document', routers: '/admin/articles', needLogin: true },
+          { text: 'Message.Components.Common.Drawer.Comments', icon: 'mdi-message-reply-text', routers: '/admin/comments', needLogin: true },
+          { text: 'Message.Components.Common.Drawer.Replts', icon: 'mdi-reply-all', routers: '/admin/replys', needLogin: true },
+        ],
+        admin_items_3: [
+          { text: 'Message.Components.Common.Drawer.UserGroup', icon: 'mdi-account-group', routers: '/admin/usergroup', needLogin: true },
+          { text: 'Message.Components.Common.Drawer.User', icon: 'mdi-account-multiple', routers: '/admin/users', needLogin: true },
+          { text: 'Message.Components.Common.Drawer.Reports', icon: 'mdi-alert-octagon', routers: '/admin/reports', needLogin: true },
+          { text: 'Message.Components.Common.Drawer.Options', icon: 'mdi-cog', routers: '/admin/options', needLogin: true },
+        ],
+      },
+      NavFooter: {
+        Show: true,
+        user_com_item: [
+          { text: 'Message.Components.Common.Drawer.Home', icon: 'mdi-home', routers: '/', needLogin: false },
+          { text: 'Message.Components.Common.Drawer.Topics', icon: 'mdi-book-variant', routers: '/topics', needLogin: false },
+          { text: 'Message.Components.Common.Drawer.Questions', icon: 'mdi-forum', routers: '/questions', needLogin: false },
+          // { text: 'Message.Components.Common.Drawer.Articles', icon: 'mdi-file-document', routers: '/articles', needLogin: false },
+          { text: 'Message.Components.Common.Drawer.Users', icon: 'mdi-account-multiple', routers: '/users', needLogin: false },
+        ],
+        user_login_item: [
+          { text: 'Message.Components.Common.Drawer.Home', icon: 'mdi-home', routers: '/', needLogin: false },
+          { text: 'Message.Components.Common.Drawer.Topics', icon: 'mdi-book-variant', routers: '/topics', needLogin: false },
+          { text: 'Message.Components.Common.Drawer.Questions', icon: 'mdi-forum', routers: '/questions', needLogin: false },
+          { text: 'Message.Components.Common.Drawer.PersonalData', icon: 'mdi-account-circle', routers: '/users/local_user_id', needLogin: true },
+        ],
+        admin_login_item: [
+          { text: 'Message.Components.Common.Drawer.DashBoard', icon: 'mdi-view-dashboard', routers: '/admin', needLogin: true },
+          { text: 'Message.Components.Common.Drawer.Topics', icon: 'mdi-book-variant', routers: '/admin/topics', needLogin: true },
+          { text: 'Message.Components.Common.Drawer.UserGroup', icon: 'mdi-account-group', routers: '/admin/usergroup', needLogin: true },
+          { text: 'Message.Components.Common.Drawer.Options', icon: 'mdi-cog', routers: '/admin/options', needLogin: true },
+        ]
+      },
+      Editor: {
+        State: 'close',//open,close,minimize,maximize,moderate
+        Mode: 'question',//question,article,answer,-comment
+      },
+    },
+    
+    localdata:{
+      is_login:false,
+      user:{
+        user_id: -1,
+        user_group_id: -1,
+        username: "",
+        email: "",
+        avatar: null,
+        cover: null,
+        password: "",
+        create_ip: "",
+        create_location: "",
+        last_login_time: 0,
+        last_login_ip: "",
+        last_login_location: "",
+        follower_count: 0,
+        followee_count: 0,
+        following_article_count: 0,
+        following_question_count: 0,
+        following_topic_count: 0,
+        article_count: 0,
+        question_count: 0,
+        answer_count: 0,
+        notification_unread: 0,
+        inbox_system: 0,
+        inbox_user_group: 0,
+        inbox_private_message: 0,
+        headline: null,
+        bio: null,
+        blog: null,
+        company: null,
+        location: null,
+        create_time: 0,
+        update_time: 0,
+        disable_time: 0,
+        user_group: {
+          user_group_id: 0,
+          user_group_name: "Admin",
+          user_group_description: "Admin",
+          user_group_icon: null,
+          user_group_color: null,
+          user_group_user_count: 0,
+          ability_admin_login: false,
+          ability_admin_manage_user_group: false,
+          ability_admin_manage_user: false,
+          ability_admin_manage_topic: false,
+          ability_admin_manage_question: false,
+          ability_admin_manage_article: false,
+          ability_admin_manage_comment: false,
+          ability_admin_manage_answer: false,
+          ability_admin_manage_reply: false,
+          ability_admin_manage_report: false,
+          ability_create_article: false,
+          ability_create_question: false,
+          ability_create_answer: false,
+          ability_create_comment: false,
+          ability_create_reply: false,
+          ability_create_topic: false,
+          ability_edit_own_article: false,
+          ability_edit_own_question: false,
+          ability_edit_own_answer: false,
+          ability_edit_own_comment: false,
+          ability_edit_own_reply: false,
+          ability_edit_own_topic: false,
+          ability_delete_own_article: false,
+          ability_delete_own_question: false,
+          ability_delete_own_answer: false,
+          ability_delete_own_comment: false,
+          ability_delete_own_reply: false,
+          ability_delete_own_topic: false,
+          time_before_edit_article: 0,
+          time_before_edit_question: 0,
+          time_before_edit_answer: 0,
+          time_before_edit_comment: 0,
+          time_before_edit_reply: 0,
+          time_before_edit_topic: 0,
+          time_before_delete_article: 0,
+          time_before_delete_question: 0,
+          time_before_delete_answer: 0,
+          time_before_delete_comment: 0,
+          time_before_delete_reply: 0,
+          time_before_delete_topic: 0,
+          ability_edit_article_only_no_comment: true,
+          ability_edit_question_only_no_answer: true,
+          ability_edit_answer_only_no_comment: true,
+          ability_edit_question_only_no_comment: true,
+          ability_edit_comment_only_no_reply: true,
+          ability_edit_topic_only_no_article_or_question: true,
+          ability_delete_article_only_no_comment: true,
+          ability_delete_question_only_no_answer: true,
+          ability_delete_answer_only_no_comment: true,
+          ability_delete_question_only_no_comment: true,
+          ability_delete_comment_only_no_reply: true,
+          ability_delete_topic_only_no_article_or_question: true,
+          ability_edit_own_info: true
+        }
+      },
+      home:{
+        recommended_topic:{
+          data:null,
+          pagination:null,
+        },
+        new_questions:{
+          data:null,
+          pagination:null,
+        },
+        popular_questions:{
+          data:null,
+          pagination:null,
+        },
+        new_articles:{
+          data:null,
+          pagination:null,
+        },
+        popular_articles:{
+          data:null,
+          pagination:null,
+        },
+      },
+      topics:{
+        following:{
+          data:null,
+          pagination:null,
+        },
+        recommended:{
+          data:null,
+          pagination:null,
+        },
+      },
+      topics_page:{
+        topic:null,
+        questions:{
+          data:null,
+          pagination:null,
+        },
+        articles:{
+          data:null,
+          pagination:null,
+        },
+        following_questions:{
+          data:null,
+          pagination:null,
+        },
+        following_articles:{
+          data:null,
+          pagination:null,
+        },
+      },
+      questions:{
+        recent:{
+          data:null,
+          pagination:null,
+        },
+        popular:{
+          data:null,
+          pagination:null,
+        },
+        following:{
+          data:null,
+          pagination:null,
+        }
+      },
+      questions_page:{
+        question:null,
+        answer:{
+          data:null,//comment
+          pagination:null,
+        },
+      },
+      articles:{
+        recent:{
+          data:null,
+          pagination:null,
+        },
+        popular:{
+          data:null,
+          pagination:null,
+        },
+        following:{
+          data:null,
+          pagination:null,
+        }
+      },
+      articles_page:{
+        article:null,
+        comment:{
+          data:null,
+          pagination:null,
+        },
+      },
+      users_page:{
+        user:{
+          user_id: -1,
+          user_group_id: -1,
+          username: "",
+          email: "",
+          avatar: null,
+          cover: null,
+          password: "",
+          create_ip: "",
+          create_location: "",
+          last_login_time: 0,
+          last_login_ip: "",
+          last_login_location: "",
+          follower_count: 0,
+          followee_count: 0,
+          following_article_count: 0,
+          following_question_count: 0,
+          following_topic_count: 0,
+          article_count: 0,
+          question_count: 0,
+          answer_count: 0,
+          notification_unread: 0,
+          inbox_system: 0,
+          inbox_user_group: 0,
+          inbox_private_message: 0,
+          headline: null,
+          bio: null,
+          blog: null,
+          company: null,
+          location: null,
+          create_time: 0,
+          update_time: 0,
+          disable_time: 0,
+          user_group: {
+            user_group_id: 0,
+            user_group_name: "Admin",
+            user_group_description: "Admin",
+            user_group_icon: null,
+            user_group_color: null,
+            user_group_user_count: 0,
+            ability_admin_login: false,
+            ability_admin_manage_user_group: false,
+            ability_admin_manage_user: false,
+            ability_admin_manage_topic: false,
+            ability_admin_manage_question: false,
+            ability_admin_manage_article: false,
+            ability_admin_manage_comment: false,
+            ability_admin_manage_answer: false,
+            ability_admin_manage_reply: false,
+            ability_admin_manage_report: false,
+            ability_create_article: false,
+            ability_create_question: false,
+            ability_create_answer: false,
+            ability_create_comment: false,
+            ability_create_reply: false,
+            ability_create_topic: false,
+            ability_edit_own_article: false,
+            ability_edit_own_question: false,
+            ability_edit_own_answer: false,
+            ability_edit_own_comment: false,
+            ability_edit_own_reply: false,
+            ability_edit_own_topic: false,
+            ability_delete_own_article: false,
+            ability_delete_own_question: false,
+            ability_delete_own_answer: false,
+            ability_delete_own_comment: false,
+            ability_delete_own_reply: false,
+            ability_delete_own_topic: false,
+            time_before_edit_article: 0,
+            time_before_edit_question: 0,
+            time_before_edit_answer: 0,
+            time_before_edit_comment: 0,
+            time_before_edit_reply: 0,
+            time_before_edit_topic: 0,
+            time_before_delete_article: 0,
+            time_before_delete_question: 0,
+            time_before_delete_answer: 0,
+            time_before_delete_comment: 0,
+            time_before_delete_reply: 0,
+            time_before_delete_topic: 0,
+            ability_edit_article_only_no_comment: true,
+            ability_edit_question_only_no_answer: true,
+            ability_edit_answer_only_no_comment: true,
+            ability_edit_question_only_no_comment: true,
+            ability_edit_comment_only_no_reply: true,
+            ability_edit_topic_only_no_article_or_question: true,
+            ability_delete_article_only_no_comment: true,
+            ability_delete_question_only_no_answer: true,
+            ability_delete_answer_only_no_comment: true,
+            ability_delete_question_only_no_comment: true,
+            ability_delete_comment_only_no_reply: true,
+            ability_delete_topic_only_no_article_or_question: true,
+            ability_edit_own_info: true
+          }
+        },
+      },
+      notifications:{
+        system:{
+          data:null,
+          pagination:null,
+        },
+        user_group:{
+          data:null,
+          pagination:null,
+        },
+        private_message:{
+          data:null,
+          pagination:null,
+        }
+      },
+      users:{
+        followees:{
+          data:null,
+          pagination:null,
+        },
+        followers:{
+          data:null,
+          pagination:null,
+        },
+        recommended:{
+          data:null,
+          pagination:null,
+        }
+      },
+    }
+  },
+  getters: {
+    App: state => state.App,
+    localdata:state => state.localdata
+  },
+  mutations: {
+    SetLocalData_User(state,data,is_login){
+      state.localdata.user = data,
+      state.localdata.is_login = is_login
+    }
+  },
+  actions: {
+  },
+  modules: {
+  }
+})
