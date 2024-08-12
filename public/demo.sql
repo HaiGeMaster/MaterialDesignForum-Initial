@@ -214,7 +214,7 @@ INSERT INTO `option` (`name`, `value`) VALUES
 ('site_name', 'Material Design Forum'),
 ('site_static_url', ''),
 ('smtp_host', 'smtp.qq.com'),
-('smtp_password', 'jjnmvhcholleecgj'),
+('smtp_password', ''),
 ('smtp_port', '465'),
 ('smtp_reply_to', ''),
 ('smtp_secure', 'ssl'),
